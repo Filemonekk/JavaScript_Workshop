@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Modo Shop</title>
+</head>
+
+<body>
+    <script>
+        alert("Welcome to our shop!");
+
+        const inventory = {
+            shoes: [
+                {
+                    name: "Sneaker",
+                    price: 100,
+                    colors: ['blue', 'black'],
+                    sizes: [40, 42, 44, 46]
+                },
+                {
+                    name: "Running Shoes",
+                    price: 120,
+                    colors: ['red', 'white', 'black'],
+                    sizes: [38, 40, 42, 44, 46]
+                }
+            ],
+            pants: [
+                {
+                    name: "Jeans",
+                    price: 50,
+                    colors: ['blue', 'black'],
+                    sizes: [32, 34, 36]
+                },
+                {
+                    name: "Chinos",
+                    price: 60,
+                    colors: ['beige', 'navy', 'olive'],
+                    sizes: [30, 32, 34, 36, 38]
+                }
+            ],
+            shirts: [
+                {
+                    name: "T-Shirt",
+                    price: 25,
+                    colors: ['white', 'black', 'gray'],
+                    sizes: ['S', 'M', 'L', 'XL']
+                },
+                {
+                    name: "Formal Shirt",
+                    price: 40,
+                    colors: ['white', 'blue', 'pink'],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+                }
+            ],
+            jackets: [
+                {
+                    name: "Leather Jacket",
+                    price: 150,
+                    colors: ['black', 'brown'],
+                    sizes: ['M', 'L', 'XL']
+                },
+                {
+                    name: "Denim Jacket",
+                    price: 80,
+                    colors: ['blue', 'black'],
+                    sizes: ['S', 'M', 'L', 'XL']
+                }
+            ],
+            accessories: [
+                {
+                    name: "Watch",
+                    price: 200,
+                    colors: ['black', 'silver', 'gold'],
+                    sizes: ['Standard']
+                },
+                {
+                    name: "Sunglasses",
+                    price: 50,
+                    colors: ['black', 'brown', 'blue'],
+                    sizes: ['Standard']
+                }
+            ]
+        };
+
+        function chooseCategory() {
+            let message = 'What are you looking for?';
+            for (let i = 0; i < Object.keys(inventory).length; i++) {
+                message += '\n-' + Object.keys(inventory)[i];
+            }
+            const response = prompt(message);
+
+            if (!(response.toLowerCase() in inventory)) {
+                return chooseCategory();
+            }
+
+            return response;
+        }
+
+        const category = chooseCategory();
+
+        function chooseItem(category) {
+            let message = 'What item are you looking for?';
+
+            for (let item of inventory[category]) {
+                message += `\n- ${item.name}`;
+            }
+
+            const response = prompt(message);
+
+
+            for (let item of inventory[category]) {
+                if (item.name === response) {
+                    return item;
+                }
+            }
+
+            return chooseItem(category);
+        }
+
+        const item = chooseItem(category);
+
+        function getSize(item) {
+            let message = 'What is your size?';
+            for (let size of item.sizes) {
+                message += `\n- ${item.size}`;
+            }
+
+            const response = prompt(message);
+            const size = Number()
+        }
+
+        console.log(item);
+
+
+
+
+        
+
+    </script>
+</body>
+
+</html>
